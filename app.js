@@ -66,3 +66,16 @@ function getResult(item) {
         display.textContent = operate(operator, Number(number1), Number(number2));
     }
 }
+
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+
+        getOperator(e);
+        getNumber1(e);
+        getNumber2(e);
+        getDisplay();
+        getResult(e);
+    })
+});
+       
