@@ -5,7 +5,6 @@ let number2 = "";
 let total = "";
 let operator = "";
 
-
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector(".display");
 
@@ -42,4 +41,52 @@ function operate(operator, number1, number2) {
     }
 }
 
+function getNumber1(item) {
+    if (!operator && item.target.className == "number") {
+        number1 = number1 + item.target.textContent;
+        return number1;
+    }
+}
 
+function getNumber2(item) {
+    if (operator && item.target.className == "number") {
+        number2 = number2 + item.target.textContent;
+        return number2;
+    }
+}
+
+function getOperator(item) {
+    if (item.target.className == "operator") {
+        operator = item.target.textContent;
+        return operator;
+    }
+}
+
+function getTotal(item) {
+    if (item.target.className == "equal") {
+
+        if (total == "") {
+            total = operate(operator, Number(number1), Number(number2));
+            number1 = "";
+            number2 = "";
+            operator = "";
+            return total
+        } else if (total !== "") {
+            number1 = total;
+            total = operate(operator, Number(number1), Number(number2));
+            number1 = "";
+            number2 = "";
+            operator = "";
+            return total;
+        }
+    }
+}
+
+function getClear(item) {
+    if (item.target.className == "clear") {
+        number1 = "";
+        number2 = "";
+        operator = "";
+        total = "";
+    }
+}
