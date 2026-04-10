@@ -10,22 +10,22 @@ const display = document.querySelector(".display");
 
 function add(a, b) {
     return a + b;
-}
+};
 
 function subtract(a, b) {
     return a - b;
-}
+};
 
 function multiply(a, b) {
     return a * b;
-}
+};
 
 function divide(a, b) {
     if (b === 0) {
         return "Error";
-    }
-    return a / b
-}
+    };
+    return a / b;
+};
 
 function operate(operator, number1, number2) {
 
@@ -38,29 +38,29 @@ function operate(operator, number1, number2) {
             return multiply(number1, number2);
         case "/":
             return divide(number1, number2);
-    }
-}
+    };
+};
 
 function getNumber1(item) {
     if (!operator && item.target.className == "number") {
         number1 = number1 + item.target.textContent;
         return number1;
-    }
-}
+    };
+};
 
 function getNumber2(item) {
     if (operator && item.target.className == "number") {
         number2 = number2 + item.target.textContent;
         return number2;
-    }
-}
+    };
+};
 
 function getOperator(item) {
     if (item.target.className == "operator") {
         operator = item.target.textContent;
         return operator;
-    }
-}
+    };
+};
 
 function getTotal(item) {
     if (item.target.className == "equal") {
@@ -78,9 +78,9 @@ function getTotal(item) {
             number2 = "";
             operator = "";
             return total;
-        }
-    }
-}
+        };
+    };
+};
 
 function getClear(item) {
     if (item.target.className == "clear") {
@@ -88,5 +88,16 @@ function getClear(item) {
         number2 = "";
         operator = "";
         total = "";
-    }
-}
+    };
+};
+
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        getNumber1(e);
+        getNumber2(e);
+        getOperator(e);
+        getTotal(e);
+        getClear(e);
+    });
+});
