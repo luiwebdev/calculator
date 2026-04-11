@@ -91,6 +91,16 @@ function getClear(item) {
     };
 };
 
+function getDisplay(item) {
+    display.textContent = number1 + operator + number2;
+
+    if (item.target.className == "equal") {
+        display.textContent = total;
+    } else if (total !== "") {
+        display.textContent = total + operator + number2;
+    }
+}
+
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -99,5 +109,6 @@ buttons.forEach((button) => {
         getOperator(e);
         getTotal(e);
         getClear(e);
+        getDisplay(e);
     });
 });
