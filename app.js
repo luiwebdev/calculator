@@ -42,14 +42,14 @@ function operate(operator, number1, number2) {
 };
 
 function getNumber1(item) {
-    if (!operator && item.target.className == "number") {
+    if (operator == "" && item.target.className == "number") {
         number1 = number1 + item.target.textContent;
         return number1;
     };
 };
 
 function getNumber2(item) {
-    if (operator && item.target.className == "number") {
+    if (operator !== "" && item.target.className == "number") {
         number2 = number2 + item.target.textContent;
         return number2;
     };
@@ -66,7 +66,9 @@ function getTotal(item) {
     if (item.target.className == "equal") {
 
         if (total == "") {
+            total = 0;
             total = operate(operator, Number(number1), Number(number2));
+            console.log(total);
             number1 = "";
             number2 = "";
             operator = "";
@@ -79,6 +81,8 @@ function getTotal(item) {
             operator = "";
             return total;
         };
+
+        
     };
 };
 
@@ -110,5 +114,8 @@ buttons.forEach((button) => {
         getTotal(e);
         getClear(e);
         getDisplay(e);
+
+        
     });
 });
+
